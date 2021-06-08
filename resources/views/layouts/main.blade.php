@@ -21,7 +21,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin.min.css') }}" rel="stylesheet">
-
+    @livewireStyles
 </head>
 
 <body id="page-top">
@@ -174,7 +174,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/sb-admin.min.js') }}"></script>
-
+    @stack('modals')
+    @livewireScripts
 </body>
 
 </html>
