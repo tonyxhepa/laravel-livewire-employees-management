@@ -176,6 +176,18 @@
     <script src="{{ asset('js/sb-admin.min.js') }}"></script>
     @stack('modals')
     @livewireScripts
+    <script>
+        window.addEventListener('closeModal', event => {
+            $('#exampleModal').modal('hide')
+        })
+
+    </script>
+    <script>
+        window.addEventListener('showModal', event => {
+            $('#exampleModal').modal('show')
+        })
+
+    </script>
 </body>
 
 </html>
