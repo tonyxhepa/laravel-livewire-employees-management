@@ -58,7 +58,7 @@
                 </a>
                 <div id="collapseSystem" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Country</a>
+                        <a class="collapse-item" href="{{ route('countries.index') }}">Country</a>
                         <a class="collapse-item" href="">State</a>
                         <a class="collapse-item" href="">Department</a>
                         <a class="collapse-item" href="">City</a>
@@ -177,16 +177,9 @@
     @stack('modals')
     @livewireScripts
     <script>
-        window.addEventListener('closeModal', event => {
-            $('#exampleModal').modal('hide')
+        window.addEventListener('modal', event => {
+            $(event.detail.modalId).modal(event.detail.actionModal)
         })
-
-    </script>
-    <script>
-        window.addEventListener('showModal', event => {
-            $('#exampleModal').modal('show')
-        })
-
     </script>
 </body>
 
