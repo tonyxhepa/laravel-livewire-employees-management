@@ -42,7 +42,7 @@
             <hr class="sidebar-divider">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="/employees">
+                <a class="nav-link" href="{{ route('employees.index') }}">
                     <span>Employee Management</span></a>
             </li>
 
