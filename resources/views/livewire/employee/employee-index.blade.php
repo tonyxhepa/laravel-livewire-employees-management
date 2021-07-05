@@ -21,6 +21,15 @@
                                     <input type="search" wire:model="search" class="form-control mb-2"
                                         id="inlineFormInput" placeholder="Jane Doe">
                                 </div>
+                                <div class="col">
+                                    <select wire:model="selectedDepartmentId" class="form-control mb-2">
+                                        <option selected>Choose Department</option>
+
+                                        @foreach (App\Models\Department::all() as $department)
+                                            <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col" wire:loading>
                                     <div class="spinner-border" role="status">
                                         <span class="sr-only">Loading...</span>
@@ -52,8 +61,10 @@
                         @forelse ($employees as $employee)
                             <tr>
                                 <th scope="row">{{ $employee->id }}</th>
-                                <td>{{ $employee->country->name }}</td>
                                 <td>{{ $employee->first_name }}</td>
+                                <td>{{ $employee->department->name }}</td>
+                                <td>{{ $employee->country->name }}</td>
+                                <td>{{ $employee->date_hired }}</td>
                                 <td>
                                     <button wire:click="showEditModal({{ $employee->id }})"
                                         class="btn btn-success">Edit</button>
@@ -284,10 +295,10 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" wire:click="closeModal">Close</button>
                         @if ($editMode)
-                            <button type="button" class="btn btn-primary" wire:click="updateState">Update
+                            <button type="button" class="btn btn-primary" wire:click="updateEmployee">Update
                                 Employee</button>
                         @else
-                            <button type="button" class="btn btn-primary" wire:click="storeState">Store
+                            <button type="button" class="btn btn-primary" wire:click="storeEmployee">Store
                                 Employee</button>
                         @endif
                     </div>
