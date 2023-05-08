@@ -96,7 +96,7 @@
                                     <select wire:model.defer="countryId" class="custom-select">
                                         <option selected>Choose</option>
 
-                                        @foreach (App\Models\Country::all() as $country)
+                                        @foreach ($state->country() as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
                                     </select>
